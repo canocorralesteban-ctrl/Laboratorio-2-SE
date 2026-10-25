@@ -4,7 +4,7 @@
  * @hardware: ESP32 (PANTHER48)
  * @author: Esteban Cano, Paulina Cabriales
  * @date: 22/Octubre/2026
- * @descripcion: Prototiopos de las funciones del driver
+ * @descripcion: Prototipos de las funciones del driver
  *****************************************************************************/
 
 #ifndef  DRIVER_GPIO_H
