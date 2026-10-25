@@ -11,8 +11,8 @@
 #ifndef BSP_H
 #define BSP_H
 
-#include "hal_gpio.h"
-
+#include <stdbool.h>
+#include "esp_err.h"
 
 // Pines de los leds
 typedef enum {
@@ -34,9 +34,12 @@ typedef enum {
 typedef enum {
     BTN_1 = 18,
     BTN_2 = 19
-} boton_t;
+} button_t;
 
 // Prototipo de las funciones del bsp
-
+esp_err_t bsp_init(void);
+void bsp_led_on(led_t led);
+void bsp_led_off(led_t led);
+bool bsp_btn_pressed(button_t btn);
 
 #endif
