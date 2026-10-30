@@ -1,9 +1,8 @@
-
 /**
  * @subject: Software Embebido
  * @file: driver_gpio_config.h
  * @hardware: ESP32 (PANTHER48)
- * @author: Esteban Cano, Paulina Cabriales
+ * @authors: Esteban Cano, Paulina Cabriales
  * @date: 23/Octubre/2026
  * @descripcion: Mapeo de registros de GPIO con estructura
  */
@@ -42,8 +41,17 @@ typedef struct {
 #define FUN_WPD  (1UL<<7)   //pull down interno
 #define FUN_WPU  (1UL<<8)   //pull up interno
 #define FUN_IE   (1UL<<9)   //habilitar entrada
-#define MCU_SEL  (1UL<<13)  //selecciona que el pin sea controlado por el MCU
+
+#define MCU_SEL_MASK  (7UL<<12)   // sirve para limpiarlo antes de escribir
+#define MCU_SEL_GPIO  (2UL<<12)   // el pin trabaja como GPIO normal
 
 #define _BIT(X)  (1UL<<(X)) //mascara de bit para el pin X
+
+#define IS_IN_RANGE(VAL,MIN,MAX)  (((MIN) <= (VAL)) && ((VAL) <= (MAX)))
+#define IS_GPIO(NUM)    (((NUM) <= 19) || IS_IN_RANGE(NUM, 21, 23)\
+                        || IS_IN_RANGE(NUM, 25, 27) || IS_IN_RANGE(NUM, 32, 39))
+
+#define IS_ONLY_IN(NUM) (IS_IN_RANGE(NUM, 34, 39))
+
 
 #endif

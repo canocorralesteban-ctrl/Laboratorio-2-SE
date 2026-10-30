@@ -19,11 +19,11 @@ esp_err_t hal_gpio_init(uint8_t pin, hal_mode_t mode, hal_pull_t pull) {
         else if (pull == HAL_PULL_DOWN)
             pull_driver = DRIVER_PULL_DOWN;
 
-        return gpio_entrada(pin, pull_driver);
+        return gpio_input(pin, pull_driver);
     }
 
     if (mode == HAL_OUTPUT)
-        return gpio_salida(pin);
+        return gpio_output(pin);
 
     return ESP_ERR_INVALID_ARG;
 }
