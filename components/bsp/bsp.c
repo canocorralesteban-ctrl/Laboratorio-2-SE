@@ -13,6 +13,7 @@
 
 esp_err_t bsp_init(void) {
 
+    static const rgb_t rgbs[] = {RGB_R, RGB_G, RGB_B};
     static const led_t leds[] = {LED_2, LED_4, LED_5, LED_16, LED_17};
     static const button_t buttons[] = {BTN_1, BTN_2};
 
@@ -30,7 +31,14 @@ esp_err_t bsp_init(void) {
     if(hal_timer_init() != ESP_OK)
         return ESP_FAIL;
 
+    
+    for(unsigned int i = 0; i < sizeof(rgbs) / sizeof(rgbs[0]); i++) {
+    if(hal_gpio_init(rgbs[i], HAL_OUTPUT, HAL_NONE_PULL) != ESP_OK)
+        return ESP_FAIL;
+    hal_gpio_write(rgbs[i], true);      
+}
     return ESP_OK;
+
 }
 
 void bsp_led_on(led_t led) {
@@ -43,6 +51,11 @@ void bsp_led_off(led_t led) {
 
 bool bsp_btn_pressed(button_t btn) {
     return !hal_gpio_read(btn);
+}
+
+
+void bsp_rgb_set(rgb_t rgb, bool state) {
+    hal_gpio_write(rgb, !state); //funciona con logica negativa
 }
 
 esp_err_t bsp_timer_start(uint32_t period_ms) {

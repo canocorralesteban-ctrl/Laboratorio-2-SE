@@ -1,4 +1,4 @@
-/******************************** Timer STRUCT Configuration **************************************
+/**
  * @subject: Software Embebido
  * @file: bsp.h
  * @hardware: ESP32 (PANTHER48)
@@ -6,7 +6,7 @@
  * @date: 22/Octubre/2026
  * @descripcion: BSP de la placa Panther48
  * @brief: Interfaz del BSP
- *********************************************************************************************/
+ */
 
 #ifndef BSP_H
 #define BSP_H
@@ -41,6 +41,7 @@ typedef enum {
 esp_err_t bsp_init(void);
 void bsp_led_on(led_t led);
 void bsp_led_off(led_t led);
+void bsp_rgb_set(rgb_t rgb, bool state);
 bool bsp_btn_pressed(button_t btn);
 esp_err_t bsp_timer_start(uint32_t period_ms);
 void bsp_timer_stop(void);
