@@ -1,11 +1,11 @@
-/****************************************************************************
+/** 
  * @subject: Software Embebido
  * @file: hal_gpio.c
  * @hardware: ESP32 (PANTHER48)
  * @author: Esteban Cano, Paulina Cabriales
  * @date: 22/Octubre/2026
  * @descripcion: Se conectan el hal y driver
- *****************************************************************************/
+ */
 
 #include "hal_gpio.h"
 #include "driver_gpio.h"

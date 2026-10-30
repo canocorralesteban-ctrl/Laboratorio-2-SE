@@ -1,11 +1,11 @@
-/****************************************************************************
+/**
  * @subject: Software Embebido
  * @file: hal_gpio.h
  * @hardware: ESP32 (PANTHER48)
  * @author: Esteban Cano, Paulina Cabriales
  * @date: 22/Octubre/2026
  * @descripcion: Prototipos del HAL de gpio
- *****************************************************************************/
+ */
 
 #ifndef HAL_GPIO_H
 #define HAL_GPIO_H
