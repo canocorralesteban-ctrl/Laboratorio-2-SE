@@ -30,7 +30,7 @@ esp_err_t bsp_init(void) {
     if(hal_timer_init() != ESP_OK)
         return ESP_OK;
 
-    return ESP_OK;
+    return ESP_FAIL;
 }
 
 void bsp_led_on(led_t led) {
