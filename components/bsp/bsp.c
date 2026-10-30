@@ -33,10 +33,10 @@ esp_err_t bsp_init(void) {
 
     
     for(unsigned int i = 0; i < sizeof(rgbs) / sizeof(rgbs[0]); i++) {
-    if(hal_gpio_init(rgbs[i], HAL_OUTPUT, HAL_NONE_PULL) != ESP_OK)
-        return ESP_FAIL;
-    hal_gpio_write(rgbs[i], true);      
-}
+        if(hal_gpio_init(rgbs[i], HAL_OUTPUT, HAL_NONE_PULL) != ESP_OK)
+            return ESP_FAIL;
+        hal_gpio_write(rgbs[i], true);    //para que inicien en apagado, logica negativa 
+    }
     return ESP_OK;
 
 }
@@ -52,7 +52,6 @@ void bsp_led_off(led_t led) {
 bool bsp_btn_pressed(button_t btn) {
     return !hal_gpio_read(btn);
 }
-
 
 void bsp_rgb_set(rgb_t rgb, bool state) {
     hal_gpio_write(rgb, !state); //funciona con logica negativa
