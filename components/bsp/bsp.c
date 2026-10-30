@@ -9,6 +9,7 @@
 
 #include "bsp.h"
 #include "hal_gpio.h"
+#include "hal_timer.h"
 
 esp_err_t bsp_init(void) {
 
@@ -26,6 +27,9 @@ esp_err_t bsp_init(void) {
             return ESP_FAIL;
     }
 
+    if(hal_timer_init() != ESP_OK)
+        return ESP_OK;
+
     return ESP_OK;
 }
 
@@ -39,4 +43,16 @@ void bsp_led_off(led_t led) {
 
 bool bsp_btn_pressed(button_t btn) {
     return !hal_gpio_read(btn);
+}
+
+esp_err_t bsp_timer_start(uint32_t period_ms) {
+    return hal_timer_start(period_ms);
+}
+
+void bsp_timer_stop(void) {
+    hal_timer_stop();
+}
+
+bool bsp_timer_expired(void) {
+    return hal_timer_expired();
 }

@@ -11,6 +11,7 @@
 #ifndef BSP_H
 #define BSP_H
 
+#include <stdint.h>
 #include <stdbool.h>
 #include "esp_err.h"
 
@@ -41,5 +42,8 @@ esp_err_t bsp_init(void);
 void bsp_led_on(led_t led);
 void bsp_led_off(led_t led);
 bool bsp_btn_pressed(button_t btn);
+esp_err_t bsp_timer_start(uint32_t period_ms);
+void bsp_timer_stop(void);
+bool bsp_timer_expired(void);
 
 #endif

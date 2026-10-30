@@ -1,3 +1,3 @@
 idf_component_register(SRCS "bsp.c"
                     INCLUDE_DIRS "include"
-                    PRIV_REQUIRES hal_gpio)
+                    PRIV_REQUIRES hal_gpio hal_timer)
